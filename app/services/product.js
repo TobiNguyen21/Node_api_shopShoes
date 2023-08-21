@@ -51,4 +51,11 @@ module.exports = {
                 .updateOne({ _id: params.id }, params.body)
         }
     },
+    eventItem: async (params, option) => {
+        console.log("params", params);
+        const type = params.type;
+        if (type != 'like' && type != 'dislike') return;
+        const number = (type == 'like') ? 1 : -1;
+        return await MainModel.findByIdAndUpdate(params.id, { $inc: { like: number } }, { new: true });
+    }
 }

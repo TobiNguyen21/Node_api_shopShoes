@@ -16,8 +16,6 @@ router.post('/add', middle_verifyToken, middle_authorize("publisher", "admin"), 
 
 router.put('/edit/:id', middle_verifyToken, middle_authorize("publisher", "admin"), main_Validate.validator(), asyncHandler(main_Controller.editItem));
 
-router.put('/event/:type/:id', asyncHandler(main_Controller.eventItem))
-
 router.delete('/delete/:id', middle_verifyToken, middle_authorize("publisher", "admin"), asyncHandler(main_Controller.deleteItem));
 
 module.exports = router;

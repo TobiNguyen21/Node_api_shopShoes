@@ -58,11 +58,5 @@ module.exports = {
             return await MainModel
                 .updateOne({ _id: params.id }, params.body)
         }
-    },
-    eventItem: async (params, option) => {
-        console.log("params", params);
-        const type = params.type;
-        if (type != 'like' && type != 'dislike') return;
-        return await MainModel.findByIdAndUpdate(params.id, { $inc: { [type]: 1 } }, { new: true });
     }
 }

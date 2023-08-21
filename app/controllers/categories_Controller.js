@@ -19,6 +19,7 @@ module.exports = {
 
         res.status(200).json({
             success: true,
+            count: data.length,
             data: data
         })
     },
@@ -45,14 +46,6 @@ module.exports = {
                 data: data
             })
         }
-    },
-    eventItem: async (req, res, next) => {
-        const data = await main_Service.eventItem({ 'id': req.params.id, 'type': req.params.type });
-        if (!data) return res.status(200).json({ success: true, data: "No data" });
-        res.status(200).json({
-            success: true,
-            data: data
-        })
     },
     deleteItem: async (req, res, next) => {
         const data = await main_Service.deleteItem({ 'id': req.params.id }, { 'task': 'one' })
